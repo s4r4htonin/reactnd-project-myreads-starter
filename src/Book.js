@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 class Book extends React.Component {
 
@@ -28,10 +28,18 @@ class Book extends React.Component {
                     </div>
                 </div>
                 <div className="book-title">{book.title}</div>
-                <div className="book-authors">{book.authors.map((author) => author)}</div>
+                <div className="book-authors">
+                    {book.authors.map((author, index) => 
+                        {if (index < 1) {
+                            return author
+                        } else {
+                            return `, ${author}`
+                        }}
+                    )}
+                </div>
             </div>
         )
     }
 }
 
-export default Book
+export default Book;
