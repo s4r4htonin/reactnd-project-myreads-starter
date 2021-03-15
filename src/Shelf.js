@@ -4,16 +4,16 @@ import Book from './Book';
 class Shelf extends React.Component {
     render() {
 
-        const { h2, books } = this.props;
+        const { shelfName, books, updateShelf } = this.props;
         
         return (
             <div className="bookshelf">
-                <h2 className="bookshelf-title">{h2}</h2>
+                <h2 className="bookshelf-title">{shelfName}</h2>
                 <div className="bookshelf-books">
                   <ol className="books-grid">
                     {books.map((book) => 
-                      <li>
-                          <Book book={book}/>
+                      <li key={book.id}>
+                          <Book book={book} onClick={this.updateShelf} />
                       </li>
                     )}
                   </ol>

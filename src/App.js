@@ -9,6 +9,7 @@ class BooksApp extends React.Component {
     read: []
   }
 
+  //get books to load on current shelves
   async componentDidMount() {
     let currentBooks = await BooksAPI.getAll();
 
@@ -21,6 +22,12 @@ class BooksApp extends React.Component {
   }
 
   //method to update shelf
+  updateShelf = (book, newShelf) => {
+    // this.setState(currState => ({
+    //     currState.shelf 
+    // }));
+    console.log(book, newShelf);
+  }
 
   //method to add to shelf
 
@@ -36,9 +43,9 @@ class BooksApp extends React.Component {
           </div>
           <div className="list-books-content">
             <div>
-              <Shelf h2='Currently Reading' books={currentlyReading} />
-              <Shelf h2='Want to Read' books={wantToRead} />
-              <Shelf h2='Read' books={read} />
+              <Shelf shelfName='Currently Reading' books={currentlyReading} onClick={this.updateShelf}/>
+              <Shelf shelfName='Want to Read' books={wantToRead} onClick={this.updateShelf}/>
+              <Shelf shelfName='Read' books={read} onClick={this.updateShelf}/>
             </div>
           </div>
           <div className="open-search">
@@ -50,4 +57,4 @@ class BooksApp extends React.Component {
   }
 }
 
-export default BooksApp
+export default BooksApp;
